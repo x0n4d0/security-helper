@@ -1,2 +1,7 @@
-# number-with-suffix
-Package to format number returns with suffix. 
+<div align='justify'>
+
+## num-format
+
+> Useful npm package to format numbers.
+
+</div>
