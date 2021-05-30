@@ -1,0 +1,27 @@
+{
+  "name": "num-format",
+  "version": "1.0.0",
+  "description": "Useful npm package to convert numbers over a thousand into a reduced form with a suffix.",
+  "author": "Maurício Romagnoli <x0n4d0> - romagnolimauricio@gmail.com",
+  "license": "MIT",
+  "homepage": "https://github.com/x0n4d0/num-format#readme",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "keywords": [
+    "npm-package",
+    "typescript",
+    "format-number"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "jest --config=jest.config.json",
+    "prepublish": "npm test"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "@types/node": "^15.3.0",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.5.6",
+    "typescript": "^4.2.4"
+  }
+}
