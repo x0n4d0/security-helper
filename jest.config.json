@@ -2,7 +2,7 @@
   "transform": {
     "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
   },
-  "testRegex": "/__test__/.*",
+  "testRegex": "^.+\\.spec.ts$",
   "testEnvironment": "node",
   "moduleFileExtensions": [
     "ts",
