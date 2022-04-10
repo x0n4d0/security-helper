@@ -1,7 +1,7 @@
 <div align='justify'>
 
-## num-format
+## security-helper
 
-> Useful npm package to format numbers.
+> An helper package to improve apps security.
 
 </div>

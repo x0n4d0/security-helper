@@ -1,16 +1,18 @@
 {
-  "name": "num-format",
+  "name": "security-helper",
   "version": "1.0.0",
-  "description": "Useful npm package to convert numbers over a thousand into a reduced form with a suffix.",
+  "description": "An helper package to improve apps security.",
   "author": "Maurício Romagnoli <x0n4d0> - romagnolimauricio@gmail.com",
   "license": "MIT",
-  "homepage": "https://github.com/x0n4d0/num-format#readme",
+  "homepage": "https://github.com/x0n4d0/security-helper#readme",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "keywords": [
     "npm-package",
     "typescript",
-    "format-number"
+    "security-helper",
+    "security",
+    "hash"
   ],
   "scripts": {
     "build": "tsc",

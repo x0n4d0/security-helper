@@ -1,32 +1,41 @@
-import { compareWithHash, getHashFrom } from './salt-hash';
-
-let hashedStr: string;
-let isTheSameStr: boolean;
+import { SaltHash, Hash } from './salt-hash';
 
 const ANY_STRING: string = 'any_string';
-const ANY_INVALID_STRING: string = 'invalid_string';
+const INVALID_SALT_HASH_FORMAT: string = 'any';
+const VALID_SALT_HASH_FORMAT: string = `f40fdf1fe3f5ac53:f40fdf1fe3f5ac53`;
 
-describe('salt-hash', () => {
+let saltHash: Hash;
 
-  describe('getHashFrom', () => {
-    it('should be able to generate hash from one string', () => {
-      hashedStr = getHashFrom(ANY_STRING);
-      const isHashedStrGreaterThanStr = hashedStr.length > ANY_STRING.length;
-      expect(isHashedStrGreaterThanStr).toBe(true);
+describe('SaltHash', () => {
+  beforeAll(() => {
+    saltHash = new SaltHash();
+  })
+
+  describe('getHash()', () => {
+    it('should be able to get hashed content', () => {
+      const hash = saltHash.getHash(ANY_STRING);
+      expect(!!hash).toBe(true);
     })
   })
 
-  describe('compareWithHash', () => {
-    it('should be return true if string and hashed string is the same', () => {
-      hashedStr = getHashFrom(ANY_STRING);
-      isTheSameStr = compareWithHash(ANY_STRING, hashedStr);
-      expect(isTheSameStr).toBe(true);
+  describe('compareHash()', () => {
+    it('should be throw new InvalidSaltHashError if hash param is not valid', () => {
+      try {
+        saltHash.compareHash(ANY_STRING, INVALID_SALT_HASH_FORMAT);
+      } catch (e) {
+        expect(e.name).toBe('InvalidSaltHashError');
+      }
     })
 
-    it('should be return false if string and hashed string is not the same', () => {
-      hashedStr = getHashFrom(ANY_STRING);
-      isTheSameStr = compareWithHash(ANY_INVALID_STRING, hashedStr);
-      expect(isTheSameStr).toBe(false);
+    it('should be return true if content and hash are equal', () => {
+      const hash = saltHash.getHash(ANY_STRING);
+      const isTheSame = saltHash.compareHash(ANY_STRING, hash);
+      expect(isTheSame).toBe(true);
+    })
+
+    it('should be return false if content and hash not equal', async () => {
+      const isTheSame = saltHash.compareHash(ANY_STRING, VALID_SALT_HASH_FORMAT);
+      await expect(isTheSame).toBe(false);
     })
   })
 })
